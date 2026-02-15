@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { LandmarkInfo, AppTheme } from '../types';
+import { Logo } from './Logo';
 
 interface LandmarkOverlayProps {
   image: string;
@@ -120,14 +121,17 @@ export const LandmarkOverlay: React.FC<LandmarkOverlayProps> = ({ image, data, a
 
         {/* Header HUD */}
         <div className="absolute top-8 left-8 right-8 flex justify-between items-start">
-          <button 
-            onClick={onClose}
-            className="glass p-3 rounded-full hover:bg-white/20 transition text-white"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          <div className="flex flex-col gap-4">
+            <button 
+              onClick={onClose}
+              className="glass p-3 rounded-full hover:bg-white/20 transition text-white w-fit"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <Logo theme={theme} size={24} className="hidden sm:flex" />
+          </div>
           
           <div className="text-right glass px-4 py-2 rounded-xl text-white">
             <h1 className="text-xl font-bold tracking-tight">{data.name}</h1>

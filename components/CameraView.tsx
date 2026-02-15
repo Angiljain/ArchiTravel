@@ -1,6 +1,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { AppLanguage, AppTheme } from '../types';
+import { Logo } from './Logo';
 
 interface CameraViewProps {
   onCapture: (base64: string) => void;
@@ -92,6 +93,7 @@ export const CameraView: React.FC<CameraViewProps> = ({ onCapture, language, the
   if (hasPermission === false) {
     return (
       <div className="flex flex-col items-center justify-center h-full space-y-4 p-8 text-center bg-black">
+        <Logo theme="cyberpunk" className="mb-8" size={80} />
         <div className="bg-red-500/20 p-4 rounded-full">
           <svg className="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -128,10 +130,14 @@ export const CameraView: React.FC<CameraViewProps> = ({ onCapture, language, the
       
       {/* HUD Elements */}
       <div className="absolute top-8 left-8 right-8 flex justify-between items-start pointer-events-none">
-        <div className="glass px-4 py-2 rounded-lg flex flex-col">
-          <span className={`text-[10px] uppercase tracking-widest font-bold ${themeColors[theme].split(' ')[0]}`}>{strings.scanner}</span>
-          <span className="text-lg font-mono text-white">{strings.status}</span>
+        <div className="flex flex-col gap-4 items-start">
+          <Logo theme={theme} size={32} />
+          <div className="glass px-4 py-2 rounded-lg flex flex-col">
+            <span className={`text-[10px] uppercase tracking-widest font-bold ${themeColors[theme].split(' ')[0]}`}>{strings.scanner}</span>
+            <span className="text-lg font-mono text-white">{strings.status}</span>
+          </div>
         </div>
+        
         <div className="glass px-4 py-2 rounded-lg flex flex-col items-end pointer-events-auto">
           <button 
             onClick={() => setShowSettings(!showSettings)}
