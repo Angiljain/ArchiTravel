@@ -1,0 +1,7 @@
+{
+  "name": "ArchiTravel AR",
+  "description": "A futuristic photo-tourism app that identifies landmarks, fetches real-time history via Google Search, and provides immersive audio narrations.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
